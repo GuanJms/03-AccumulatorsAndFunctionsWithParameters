@@ -5,58 +5,63 @@ This module uses ROSEGRAPHICS to demonstrate:
   -- accessing their DATA via INSTANCE VARIABLES.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Shengjun Guan.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 #
-# TODO: 2.
+# DONE: 2.
 #   RUN this program.  Then answer the following,
 #     GETTING HELP AS NEED! (Ask questions!!!)
 #
 #     a. For the RoseGraphics coordinate system:
 #
 #        -- Where is the (0, 0) point on the screen?
-#              WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#       the (0, 0) point is on the left top of the screen
 #
 #        -- In what direction on the screen
 #           does the positive X-axis point?
-#              WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#       The positive X-axis points to right horizontally.
 #
 #        -- In what direction on the screen
 #           does the positive Y-axis point?
-#              WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#       The positive Y-axis points towards down vertically.
 #
 #     b. Write a line of code that constructs a RoseWindow object:
-#            WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#            window = rg.RoseWindow(500, 300, 'Example 1: An empty window')
 #
 #     c. What is the default height of a RoseWindow?
 #        (Use the HOVER trick to determine the answer to this question.)
-#            WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#            The default of a RoseWindow is that width = 400, height = 300.
 #
 #     d. Write a line of code that construct a RoseWindow object
 #        whose height is 100:  (Use the HOVER trick to figure it out)
-#            WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#            window = rg.RoseWindow(400, 100, 'An empty window')
 #
 #     e. Use the DOT trick to answer the following:
 #
 #          -- Write the names of two types of graphics objects that
 #             you can construct OTHER than Circle and Point:
-#                WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#                point0 = rg.Ellipse(rg.Point(40,100), rg.Point(400, 300))
+#               circle = rg.Line((rg.Point(40,100), rg.Point(400, 300))
 #
 #          -- Write the names of three METHODs that Circle objects have:
-#                WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#                circle.move_center_to(300, 200)
 #
 #          -- Write the names of three INSTANCE VARIABLEs that Circle
 #             objects have:
-#                WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#             circle.fill_color = 'blue'
+#             circle.outline_color = 'black'
+#             circle.outline_thickness = 5
 #
 #     f. What does a RoseWindow RENDER method do?
-#            WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#
+#            rg.RoseWindow.continue_on_mouse_click()
 #
 #     g. When is a RoseWindow close_on_mouse_click method call
 #        necessary?  Why?
-#            WRITE_YOUR_ANSWER_HERE,_REPLACING_THIS
+#            After constructing a window, we want to exit the window, or the window will be showing all the
+#            time and the code of constructing next window will be executed immediately.
 #
 #   ASK QUESTIONS ** NOW ** if you do not understand how the
 #     RoseGraphics graphics system works.
@@ -88,6 +93,7 @@ def example1():
     window.close_on_mouse_click()
 
 
+
 def example2():
     """ Displays two Point objects. """
     # ------------------------------------------------------------------
@@ -101,6 +107,8 @@ def example2():
     # ------------------------------------------------------------------
     point1 = rg.Point(100, 150)
     point2 = rg.Point(200, 50)
+    point0 = rg.Point(0, 0)
+    pointx = rg.Point(100,2)
 
     # ------------------------------------------------------------------
     # A RoseGraphics object is not associated with a window,
@@ -108,6 +116,9 @@ def example2():
     # ------------------------------------------------------------------
     point1.attach_to(window)
     point2.attach_to(window)
+    point0.attach_to(window)
+    pointx.attach_to(window)
+
 
     # ------------------------------------------------------------------
     # And they still are not DRAWN until you RENDER the window.
@@ -133,6 +144,7 @@ def example3():
     # Has  fill_color  instance variable.
     # ------------------------------------------------------------------
     center_point = rg.Point(300, 100)
+
     radius = 50
     circle = rg.Circle(center_point, radius)
     circle.fill_color = 'green'
